@@ -53,7 +53,7 @@ Heine 视角："**任何离散路径**接近 $x_0$ 时函数行为"。
 
 ## 完整证明
 
-### ($1 \Rightarrow 2$)
+### （1 ⇒ 2）
 
 设 $\lim_{x \to x_0} f(x) = L$，$\{x_n\}$ 满足 $x_n \to x_0, x_n \neq x_0$。
 
@@ -65,7 +65,7 @@ Heine 视角："**任何离散路径**接近 $x_0$ 时函数行为"。
 
 故 $\forall n > N : |f(x_n) - L| < \varepsilon$，即 $f(x_n) \to L$。$\blacksquare$
 
-### ($2 \Rightarrow 1$)（反证）
+### （2 ⇒ 1，反证）
 
 设 (1) 不成立。则
 $$

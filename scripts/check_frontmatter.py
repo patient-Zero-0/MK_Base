@@ -53,9 +53,35 @@ def extract_frontmatter(path: Path) -> dict | None:
         print(f"  ⚠ YAML 解析失败：{e}")
         return None
 
+def check_headings(path: Path) -> list[str]:
+    """检查正文小标题；Quartz 的目录(TOC)不渲染 KaTeX。"""
+    errors = []
+    text = path.read_text(encoding="utf-8")
+    in_fence = False
+    for lineno, line in enumerate(text.splitlines(), 1):
+        stripped = line.strip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        match = re.match(r"^#{1,6}\s+(.*)$", line)
+        if not match:
+            continue
+        heading = match.group(1)
+        if "$" in heading or "\\" in heading:
+            errors.append(
+                f"第 {lineno} 行小标题包含 LaTeX；目录不会渲染公式，请改为自然语言"
+            )
+        elif re.search(r"[A-Za-z0-9)\]]\s*\^", heading):
+            errors.append(
+                f"第 {lineno} 行小标题包含 ^ 上标；目录不会渲染公式，请改为自然语言"
+            )
+    return errors
+
 def check_file(path: Path) -> list[str]:
     """检查单个文件，返回错误列表。"""
-    errors = []
+    errors = check_headings(path)
 
     fm = extract_frontmatter(path)
     if fm is None:

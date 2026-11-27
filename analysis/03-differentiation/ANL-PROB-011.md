@@ -47,7 +47,7 @@ related:
 
 <details><summary>点击展开完整解答</summary>
 
-### 第 1 题：$f(x) = x^2$，$f'(3) = 6$
+### 第 1 题
 
 **证明**：取 $\varepsilon > 0$。对 $\Delta x \neq 0$，
 $$
@@ -61,7 +61,7 @@ $$
 
 取 $\delta = \varepsilon$ 即可。$\blacksquare$
 
-### 第 2 题：$f(x) = 1/x$，$f'(2) = -1/4$
+### 第 2 题
 
 **证明**：取 $\varepsilon > 0$。对 $\Delta x \neq 0$，$\Delta x > -2$（保证 $2 + \Delta x \neq 0$），
 $$
@@ -83,7 +83,7 @@ $$
 
 > **关键点**：分母 $2 + \Delta x$ 不为零是结构限制；用 $|\Delta x| < 1$ 圈出"安全邻域"是常见技巧。
 
-### 第 3 题：$f(x) = x|x|$ 在 $0$ 处
+### 第 3 题
 
 **写明分段**：$f(x) = \begin{cases} x^2, & x \geq 0 \\ -x^2, & x < 0 \end{cases}$
 
