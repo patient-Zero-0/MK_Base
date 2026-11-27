@@ -9,6 +9,11 @@ on:
         description: "Optional deployment ID to roll back to"
         required: false
         type: string
+      disable_git_deploy:
+        description: "Disable automatic Cloudflare Pages deployments from GitHub pushes"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -35,6 +40,28 @@ jobs:
           curl -sS -H "Authorization: Bearer ${CF_API_TOKEN}" "$api/deployments?per_page=20" -o deployments.json
           jq '{success, errors, deployments: [.result[] | {id, created_on, environment, url, aliases, stage: .latest_stage.name, stage_status: .latest_stage.status}]}' deployments.json
           echo "::endgroup::"
+
+      - name: Disable automatic Git deployments
+        if: ${{ inputs.disable_git_deploy }}
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/mk-base"
+          cat > patch.json <<'JSON'
+          {
+            "source": {
+              "config": {
+                "deployments_enabled": false,
+                "production_deployments_enabled": false
+              }
+            }
+          }
+          JSON
+          echo "Disabling automatic Git deployments"
+          curl -sS -X PATCH -H "Authorization: Bearer ${CF_API_TOKEN}" -H "Content-Type: application/json" --data @patch.json "$api" -o patch-result.json
+          jq '{success, errors, result: (.result | {name, source, build_config, canonical_deployment: .canonical_deployment.id})}' patch-result.json
 
       - name: Roll back if requested
         if: ${{ inputs.deployment_id != '' }}
