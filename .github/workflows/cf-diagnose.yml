@@ -1,0 +1,50 @@
+name: Cloudflare Pages diagnose
+
+on:
+  push:
+    branches: [ops/cf-diagnose]
+  workflow_dispatch:
+    inputs:
+      deployment_id:
+        description: "Optional deployment ID to roll back to"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    name: Inspect Pages project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect project and deployments
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/mk-base"
+
+          echo "::group::Project"
+          curl -sS -H "Authorization: Bearer ${CF_API_TOKEN}" "$api" -o project.json
+          jq '{success, errors, result: (.result | {name, subdomain, domains, production_branch, latest_deployment, canonical_deployment})}' project.json
+          echo "::endgroup::"
+
+          echo "::group::Deployments"
+          curl -sS -H "Authorization: Bearer ${CF_API_TOKEN}" "$api/deployments?per_page=20" -o deployments.json
+          jq '{success, errors, deployments: [.result[] | {id, created_on, environment, url, aliases, stage: .latest_stage.name, stage_status: .latest_stage.status}]}' deployments.json
+          echo "::endgroup::"
+
+      - name: Roll back if requested
+        if: ${{ inputs.deployment_id != '' }}
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          DEPLOYMENT_ID: ${{ inputs.deployment_id }}
+        run: |
+          set -euo pipefail
+          api="https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/mk-base/deployments/${DEPLOYMENT_ID}/rollback"
+          echo "Rolling back to ${DEPLOYMENT_ID}"
+          curl -sS -X POST -H "Authorization: Bearer ${CF_API_TOKEN}" "$api" -o rollback.json
+          jq '{success, errors, result: (.result | {id, url, environment, aliases})}' rollback.json
