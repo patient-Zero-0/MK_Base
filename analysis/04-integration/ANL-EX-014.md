@@ -46,7 +46,7 @@ related:
 
 由 [[ANL-DEF-029]]，$\displaystyle \int_1^{+\infty} \dfrac{dx}{x^p}$ 收敛 $\iff p > 1$，且收敛值 $\dfrac{1}{p - 1}$。
 
-### 第 2 题：$\int_1^{+\infty} \dfrac{x}{1 + x^4} dx$
+### 第 2 题
 
 **解：** 当 $x \to +\infty$，$\dfrac{x}{1 + x^4} \sim \dfrac{x}{x^4} = \dfrac{1}{x^3}$。
 即
@@ -82,7 +82,7 @@ $$
 > | 阶乘推广 | $\Gamma(n+1) = n!$（$n \in \mathbb{N}$） |
 > | 半整数 | $\Gamma(1/2) = \sqrt{\pi}$（用第 4 题 + 换元） |
 
-### 第 4 题：$\int_0^{+\infty} e^{-x^2} dx$
+### 第 4 题
 
 **解：** $e^{-x^2}$ 在 $[0, +\infty)$ 上连续有界（$\leq 1$），唯一可能"反常"的是 $x \to +\infty$ 处。
 

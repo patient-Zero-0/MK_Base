@@ -46,7 +46,7 @@ related:
 
 <details><summary>点击展开完整解答</summary>
 
-### 第 1 题：$\sum 1/k^2$ 收敛
+### 第 1 题
 
 **证明：** 验证 $\{a_n\}$ 是 Cauchy 列。
 

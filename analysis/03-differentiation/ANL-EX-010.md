@@ -44,7 +44,7 @@ related:
 
 ## 证明 / 解答
 
-### 第 1 题：$\dfrac{x}{1+x} < \ln(1+x) < x$（$x > 0$）
+### 第 1 题
 
 **证明：** 设 $f(t) = \ln(1+t)$，$t \in [0, x]$。$f$ 连续可导，$f'(t) = \dfrac{1}{1+t}$。
 
@@ -65,7 +65,7 @@ $$
 
 代入 Lagrange 等式即得 $\dfrac{x}{1+x} < \ln(1+x) < x$。$\blacksquare$
 
-### 第 2 题：$|\sin a - \sin b| \leq |a - b|$
+### 第 2 题
 
 **证明：** 不妨 $a \neq b$（$a = b$ 平凡）。设 $f(t) = \sin t$，应用 Lagrange 于 $[\min(a,b), \max(a,b)]$：
 $$
@@ -81,7 +81,7 @@ $$
 > 由此推出 $\sin$ 在 $\mathbb{R}$ 上**一致连续**（[[ANL-DEF-024]]）——
 > 这是另一个独立证明，与 Cantor 定理形成对比（Cantor 仅适用于闭区间，$\sin$ 整个 $\mathbb{R}$ 上的一致连续来自 Lipschitz）。
 
-### 第 3 题：$e^x > 1 + x$（$x \neq 0$）
+### 第 3 题
 
 **证明：** 设 $f(t) = e^t$。$f$ 在 $\mathbb{R}$ 上可导，$f'(t) = e^t$。
 

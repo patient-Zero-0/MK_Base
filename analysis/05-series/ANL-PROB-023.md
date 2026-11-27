@@ -46,7 +46,7 @@ related:
 
 <details><summary>点击展开完整解答</summary>
 
-### 第 1 题：$\sum x^n/n$
+### 第 1 题
 
 **收敛半径**：$c_n = 1/n$，$\lim\left|\frac{c_n}{c_{n+1}}\right| = \lim\frac{n+1}{n} = 1$，故 $R=1$（[[ANL-DEF-038]]）。
 
@@ -62,7 +62,7 @@ S(x) = \int_0^x \frac{dt}{1-t} = -\ln(1-x), \qquad x \in [-1, 1).
 $$
 （端点 $x=-1$：级数收敛且 $-\ln 2$，由 Abel 第二定理与和函数单侧连续吻合。）$\quad\blacksquare$
 
-### 第 2 题：$\sum n x^n$
+### 第 2 题
 
 **收敛半径**：$c_n = n$，$\sqrt[n]{n}\to1$ 故 $R=1$。**端点** $x=\pm1$：通项 $n(\pm1)^n \not\to 0$，均发散。**收敛域 $(-1,1)$**。
 

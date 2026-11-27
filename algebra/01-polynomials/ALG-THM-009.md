@@ -49,7 +49,7 @@ applications:
 
 等价表述：若 $f, g \in \mathbb{Z}[x]$ 都是本原多项式（[[ALG-DEF-007]]），则 $fg$ 也是本原的。
 
-#### 推论（$\mathbb{Z}[x]$ 上的唯一分解）
+#### 推论（整数系数多项式环上的唯一分解）
 
 > 若 $f \in \mathbb{Z}[x]$ 在 $\mathbb{Z}[x]$ 中可约（可分解为两个非常数整系数多项式之积），则在 $\mathbb{Q}[x]$ 中也可约。反之，若 $f$ 在 $\mathbb{Q}[x]$ 中可约且 $f$ 本原，则在 $\mathbb{Z}[x]$ 中也可约。
 

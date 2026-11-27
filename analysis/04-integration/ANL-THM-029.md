@@ -57,7 +57,7 @@ applications: []
 > \left| \int_a^b f \right| \leq \int_a^b |f|.
 > $$
 
-### 性质 5：积分均值在 $[m, M]$ 内
+### 性质 5：积分均值
 
 > 设 $m \leq f(x) \leq M$ 对所有 $x \in [a, b]$ 成立。则
 > $$
@@ -78,7 +78,7 @@ applications: []
 
 > 仅证最重要的两条；其余类似。
 
-### 证明（线性性，仅 $\int (\alpha f) = \alpha \int f$）
+### 证明（线性性）
 
 **证明：** 任取分割 $P$ 与标记 $\boldsymbol{\xi}$。
 $$
@@ -90,7 +90,7 @@ $$
 
 > 类似地，$f + g$ 可积且 $\int (f + g) = \int f + \int g$（用 Riemann 和的可加性 + 极限的可加性 [[ANL-THM-009]]）。
 
-### 证明（绝对可积 $|f|$ 可积 + 三角不等式）
+### 证明（绝对可积与三角不等式）
 
 **证明（$|f|$ 可积）**：用 [[ANL-THM-026]] Darboux 准则。关键不等式：对任 $x, y$,
 $$
