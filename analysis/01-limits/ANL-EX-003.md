@@ -1,5 +1,5 @@
 ---
-title: "用单调有界证明 (1+1/n)^n 收敛（自然常数 e 的存在性）"
+title: "用单调有界定理证明自然常数 e 的存在性"
 type: example
 id: ANL-EX-003
 subject: analysis

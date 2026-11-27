@@ -1,5 +1,5 @@
 ---
-title: "重因式判定（$\\gcd(f, f')$ 刻画）"
+title: "重因式判定（最大公因式刻画）"
 type: theorem
 id: ALG-THM-006
 subject: algebra

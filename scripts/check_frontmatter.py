@@ -71,6 +71,15 @@ def check_file(path: Path) -> list[str]:
         elif (val == [] or val == {}) and field not in EMPTY_LIST_ALLOWED:
             errors.append(f"必填字段为空：{field}")
 
+    # 标题排版：Quartz 不会在 frontmatter 标题中渲染 KaTeX，
+    # 写 $...$ 或 x^n 会原样出现在页面 H1、列表与搜索索引中。
+    title = fm.get("title")
+    if isinstance(title, str):
+        if "$" in title or "\\" in title:
+            errors.append("title 不得包含 LaTeX 或 $ 符号；请把公式移到正文并用 LaTeX 排版")
+        elif re.search(r"[A-Za-z0-9)\]]\s*\^", title):
+            errors.append("title 不得使用 ^ 表示上标；请把公式移到正文并用 LaTeX 排版")
+
     # 类型检查
     entry_type = fm.get("type")
     if entry_type not in VALID_TYPES:

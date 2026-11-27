@@ -1,5 +1,5 @@
 ---
-title: "用定义求 $x^n$、$e^x$、$\\sin x$ 的导数"
+title: "用定义求三类初等函数的导数"
 type: example
 id: ANL-EX-008
 subject: analysis

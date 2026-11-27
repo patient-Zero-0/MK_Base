@@ -1,5 +1,5 @@
 ---
-title: "用 ε-δ 证明 lim_{x→2} x² = 4"
+title: "用 ε-δ 定义证明二次函数的极限"
 type: example
 id: ANL-EX-007
 subject: analysis

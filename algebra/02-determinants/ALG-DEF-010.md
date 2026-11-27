@@ -1,5 +1,5 @@
 ---
-title: "$n$ 阶行列式（完全展开定义）"
+title: "n 阶行列式（完全展开定义）"
 type: definition
 id: ALG-DEF-010
 subject: algebra

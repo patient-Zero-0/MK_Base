@@ -1,5 +1,5 @@
 ---
-title: "<在此处填写例题标题，例如：用 ε-δ 证明 lim x²=4>"
+title: "<在此处填写例题标题，例如：用 ε-δ 定义证明函数的极限>"
 type: example
 id: ANL-EX-XXX
 subject: analysis
