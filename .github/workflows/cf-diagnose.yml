@@ -28,7 +28,7 @@ jobs:
 
           echo "::group::Project"
           curl -sS -H "Authorization: Bearer ${CF_API_TOKEN}" "$api" -o project.json
-          jq '{success, errors, result: (.result | {name, subdomain, domains, production_branch, latest_deployment, canonical_deployment})}' project.json
+          jq '{success, errors, result: (.result | {name, subdomain, domains, production_branch, source, build_config, latest_deployment, canonical_deployment})}' project.json
           echo "::endgroup::"
 
           echo "::group::Deployments"
