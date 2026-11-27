@@ -1,5 +1,5 @@
 ---
-title: "用定义计算 $\\int_0^1 x^2 \\, dx$"
+title: "用定义计算幂函数的定积分"
 type: example
 id: ANL-EX-011
 subject: analysis

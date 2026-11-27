@@ -1,5 +1,5 @@
 ---
-title: "$k$ 阶子式与 Laplace 定理"
+title: "k 阶子式与 Laplace 定理"
 type: definition
 id: ALG-DEF-012
 subject: algebra

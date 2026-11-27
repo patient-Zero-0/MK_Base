@@ -1,5 +1,5 @@
 ---
-title: "辗转相除法求 $\\gcd$ 与 Bézout 系数"
+title: "辗转相除法求最大公因式与 Bézout 系数"
 type: example
 id: ALG-EX-001
 subject: algebra

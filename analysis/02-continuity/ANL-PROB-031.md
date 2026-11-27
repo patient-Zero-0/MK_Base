@@ -1,5 +1,5 @@
 ---
-title: "证明 sin(x²) 在 ℝ 上非一致连续"
+title: "证明复合函数在实数集上非一致连续"
 type: problem
 id: ANL-PROB-031
 subject: analysis

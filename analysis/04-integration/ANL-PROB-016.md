@@ -1,5 +1,5 @@
 ---
-title: "反常积分综合：高斯积分 ∫₀^∞ e^{-x²}dx 与 Γ 函数联系"
+title: "反常积分综合：高斯积分与 Γ 函数的联系"
 type: problem
 id: ANL-PROB-016
 subject: analysis

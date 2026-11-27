@@ -1,5 +1,5 @@
 ---
-title: "用 Heine 归结原则证明 lim sin(1/x) 不存在"
+title: "用 Heine 归结原则证明函数极限不存在"
 type: example
 id: ANL-EX-004
 subject: analysis

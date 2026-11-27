@@ -1,5 +1,5 @@
 ---
-title: "用夹逼定理求 lim sin(n)/n 与 lim n^(1/n)"
+title: "用夹逼定理求两个数列的极限"
 type: example
 id: ANL-EX-001
 subject: analysis

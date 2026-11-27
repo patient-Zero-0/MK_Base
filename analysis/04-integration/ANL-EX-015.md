@@ -1,5 +1,5 @@
 ---
-title: "$\\int_0^{+\\infty} \\frac{\\sin x}{x} dx$ 的收敛性（Dirichlet 积分）"
+title: "Dirichlet 积分的收敛性"
 type: example
 id: ANL-EX-015
 subject: analysis
@@ -128,6 +128,6 @@ $$
 
 - 演示定理：[[ANL-THM-035]] 反常积分判别法
 - 配合：[[ANL-DEF-029]] 无穷限反常积分
-- 关联：[[ANL-EX-008]] sin x / x 极限、[[ANL-EX-014]] 反常积分判别综合
+- 关联：[[ANL-EX-008]] $\sin x / x$ 极限、[[ANL-EX-014]] 反常积分判别综合
 - 进阶：积分值 $\pi/2$ 的复分析证明（contour integral，超出 M2 范围）
 - 平行：级数版 Dirichlet 判别 [[ANL-THM-043]]

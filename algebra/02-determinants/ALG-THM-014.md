@@ -1,5 +1,5 @@
 ---
-title: "Laplace 定理（按 $k$ 行展开）"
+title: "Laplace 定理（按 k 行展开）"
 type: theorem
 id: ALG-THM-014
 subject: algebra
