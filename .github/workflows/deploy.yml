@@ -75,15 +75,19 @@ jobs:
           fi
 
       # ── 推送至 Cloudflare Pages ───────────────────────────────────────────
+      # cloudflare/pages-action 已从 GitHub 删除（action 解析 404），
+      # 改用官方 Wrangler 直接上传，避免再次依赖失效的 Action。
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: mk-base
-          directory: .quartz-runtime/public
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4.168.0 pages deploy .quartz-runtime/public \
+            --project-name=mk-base \
+            --branch=main \
+            --commit-hash="${{ github.sha }}" \
+            --commit-message="Deploy ${{ github.sha }}" \
+            --commit-dirty=true
 
       # ── 构建失败时发邮件告警（可选，未配 MAIL_* secrets 则跳过） ────────
       - name: 构建失败告警
