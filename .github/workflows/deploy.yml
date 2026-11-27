@@ -36,14 +36,12 @@ jobs:
         run: npm ci
 
       # ── 把项目内容复制到 Quartz 的 content/ 目录 ────────────────────────
-      - name: Copy MK_Base 内容与主题到 Quartz
+      - name: Copy MK_Base 内容到 Quartz content/
         run: |
           set -e
           cp -r analysis algebra _cross refs .quartz-runtime/content/
           cp _meta/index.md .quartz-runtime/content/index.md
           cp quartz.config.ts .quartz-runtime/quartz.config.ts
-          # 泛黄纸张主题（覆盖 Quartz 自带的空 custom.scss）
-          cp styles/paper.scss .quartz-runtime/quartz/styles/custom.scss
 
       # ── Quartz 构建（KaTeX 在构建期完成渲染） ───────────────────────────
       - name: Build（Quartz → 静态 HTML）

@@ -41,10 +41,9 @@ const config: QuartzConfig = {
         code: "JetBrains Mono",
       },
       colors: {
-        // 学院深蓝 + 古书烫金 + 泛黄纸底 · 适配数学知识库的"沉静学术"基调
+        // 学院深蓝 + 古书烫金 · 适配数学知识库的"沉静学术"基调
         lightMode: {
-          // 纸底颜色；纤维与泛黄纹理由 styles/paper.scss 叠加
-          light: "#f2e7cf",
+          light: "#fbfaf7",
           lightgray: "#e5e2da",
           gray: "#b0aaa0",
           darkgray: "#3d3d3d",
@@ -55,8 +54,7 @@ const config: QuartzConfig = {
           textHighlight: "#f4d35e88",
         },
         darkMode: {
-          // 深色模式下改用深褐色旧纸，而不是中性黑
-          light: "#1b1712",
+          light: "#161618",
           lightgray: "#2a2a2c",
           gray: "#646464",
           darkgray: "#d4d4d4",
