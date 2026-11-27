@@ -1,0 +1,82 @@
+@use "./base.scss";
+
+// ────────────────────────────────────────────────────────────────
+// 淡泛黄纸张背景
+//
+// 浅米色底 + 纸张纤维、杂点、微凹凸与局部旧化痕迹。
+// 仅改变背景层；字体、字号、间距、链接色与布局保持不变。
+//
+// deploy.yml 会把本文件复制为 Quartz 的 custom.scss，
+// 并把 styles/paper-*.svg 复制到 quartz/static/。
+// 首行 @use 的 ./base.scss 相对的是 Quartz 样式目录。
+// ────────────────────────────────────────────────────────────────
+
+:root {
+  // 1024×1024 无缝纸张纹理：纤维、纸屑、颗粒与表面起伏
+  --paper-texture: url("/static/paper-light.svg");
+
+  // 纸张旧化痕迹：很淡的局部泛黄、受光与页边色
+  --paper-sheen: rgba(255, 254, 249, 0.34);
+  --paper-stain: rgba(151, 107, 43, 0.065);
+  --paper-stain-deep: rgba(113, 75, 29, 0.042);
+  --paper-deep: rgba(128, 88, 36, 0.04);
+  --paper-edge: rgba(104, 74, 33, 0.045);
+}
+
+:root[saved-theme="dark"] {
+  --paper-texture: url("/static/paper-dark.svg");
+  --paper-sheen: rgba(106, 86, 60, 0.1);
+  --paper-stain: rgba(170, 125, 56, 0.07);
+  --paper-stain-deep: rgba(117, 78, 31, 0.05);
+  --paper-deep: rgba(0, 0, 0, 0.22);
+  --paper-edge: rgba(0, 0, 0, 0.35);
+}
+
+@mixin paper-background {
+  background-color: var(--light);
+  background-image:
+    // 右上、左下的两处旧纸泛黄，叠两遍让边缘更不规则
+    radial-gradient(ellipse 18% 11% at 83% 8%, var(--paper-stain) 0%, transparent 70%),
+    radial-gradient(ellipse 8% 5% at 77% 12%, var(--paper-stain-deep) 0%, transparent 74%),
+    radial-gradient(ellipse 22% 13% at 6% 89%, var(--paper-stain) 0%, transparent 72%),
+    radial-gradient(ellipse 11% 7% at 16% 82%, var(--paper-stain-deep) 0%, transparent 76%),
+    // 纸面受光与页边旧化
+    radial-gradient(ellipse 55% 45% at 20% 8%, var(--paper-sheen) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 55% at 85% 90%, var(--paper-deep) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 45%, transparent 58%, var(--paper-edge) 100%),
+    var(--paper-texture);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+  background-size: auto, auto, auto, auto, auto, auto, auto, 1024px 1024px;
+}
+
+// 主画布：全部页面共用同一张纸
+html {
+  background-color: var(--light);
+}
+
+body {
+  @include paper-background;
+}
+
+// 浮层和白底组件也使用同一纸张，避免突兀的纯白色块
+.search > .search-container > .search-space > *,
+.popover > .popover-inner,
+.graph > .global-graph-outer > .global-graph-container {
+  @include paper-background;
+}
+
+// 移动端展开的目录
+@media all and (max-width: 800px) {
+  .explorer .explorer-content {
+    @include paper-background;
+  }
+
+  // 吸顶导航使用与页面同一张纹理并保持不透明；
+  // 纹理从左上角对齐，避免出现一块颜色或纹理不一致的矩形。
+  .page > #quartz-body .sidebar.left:has(.explorer) {
+    background-color: var(--light);
+    background-image: var(--paper-texture);
+    background-repeat: repeat;
+    background-size: 1024px 1024px;
+  }
+}
